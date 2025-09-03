@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Haritha V — Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #000000;
+      --accent: #00ff00;
+      --text: #00ff00;
+      --muted: #00cc66;
+      --card-bg: rgba(0, 255, 0, 0.05);
+      --shadow: 0 0 25px rgba(0, 255, 0, .5);
+      --radius: 10px;
+    }
+    * {box-sizing: border-box; margin: 0; padding: 0;}
+    body {
+      font-family: 'Share Tech Mono', monospace;
+      background: #000;
+      color: var(--text);
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: 
+        radial-gradient(circle at 50% 50%, rgba(0,255,0,0.05), transparent 70%),
+        repeating-linear-gradient(0deg, rgba(0,255,0,0.08) 0px, transparent 2px),
+        repeating-linear-gradient(90deg, rgba(0,255,0,0.08) 0px, transparent 2px);
+      z-index: -1;
+      animation: hackerPulse 6s infinite alternate;
+    }
+    @keyframes hackerPulse {
+      0% {opacity: 0.2;}
+      50% {opacity: 0.5;}
+      100% {opacity: 0.2;}
+    }
+    .container {max-width: 1000px; margin: 40px auto; padding: 20px;}
+    header {display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap;}
+    header h1 {font-size: 36px; color: var(--accent); text-shadow: 0 0 10px var(--accent);}
+    nav a {
+      margin: 0 10px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    nav a.active {color: #fff; border-bottom: 2px solid var(--accent);}
+    .card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: var(--radius);
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0, 255, 0, 0.3);
+      display: none;
+    }
+    .section-title {font-size: 24px; color: var(--accent); margin-bottom: 15px; text-shadow: 0 0 5px var(--accent);}
+    .list li {margin-bottom: 8px;}
+    .kv {display: grid; grid-template-columns: 150px 1fr; margin-bottom: 10px;}
+    .kv .k {color: var(--muted);}
+    @media(max-width: 768px) {
+      .kv {grid-template-columns: 1fr;}
+      header {flex-direction: column; align-items: flex-start;}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Haritha V</h1>
+      <nav>
+        <a class="active" onclick="showSection('home', event)">Home</a>
+        <a onclick="showSection('about', event)">About</a>
+        <a onclick="showSection('education', event)">Education</a>
+        <a onclick="showSection('skills', event)">Skills</a>
+        <a onclick="showSection('projects', event)">Projects</a>
+        <a onclick="showSection('contact', event)">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Home -->
+    <div id="home" class="card" style="display:block;text-align:center;">
+      <p>System Online...<br> Hello! I am <strong>Haritha V</strong>, a passionate BCA student exploring futuristic web and app development.</p>
+    </div>
+
+    <!-- About -->
+    <div id="about" class="card">
+      <div class="section-title">About Me</div>
+      <p>I’m a BCA student who loves designing and developing modern, hacker-style futuristic interfaces.</p>
+      <div class="kv"><div class="k">Age</div><div>19</div></div>
+      <div class="kv"><div class="k">DOB</div><div>16/08/2006</div></div>
+      <div class="kv"><div class="k">Gender</div><div>Female</div></div>
+    </div>
+
+    <!-- Education -->
+    <div id="education" class="card">
+      <div class="section-title">Education</div>
+      <div class="kv"><div class="k">College</div><div>Prince Shri Venkateswara Arts & Science College, Gowrivakkam</div></div>
+      <div class="kv"><div class="k">Program</div><div>BCA (Bachelor of Computer Applications)</div></div>
+    </div>
+
+    <!-- Skills -->
+    <div id="skills" class="card">
+      <div class="section-title">Skills</div>
+      <ul class="list">
+        <li><strong>Basic coding knowledge</strong> — HTML, CSS, JavaScript</li>
+        <li><strong>Leadership</strong> — guiding teams and managing tasks</li>
+        <li><strong>Problem-solving</strong> — debugging and optimization</li>
+        <li><strong>Design sense</strong> — hacker vibes & futuristic layouts</li>
+      </ul>
+    </div>
+
+    <!-- Projects -->
+    <div id="projects" class="card">
+      <div class="section-title">Projects</div>
+      <ul class="list">
+        <li>Futuristic Portfolio — neon green interface</li>
+        <li>UI Card Components — interactive & reusable designs</li>
+        <li>JavaScript Mini-Projects — DOM animations & interactivity</li>
+      </ul>
+    </div>
+
+    <!-- Contact -->
+    <div id="contact" class="card">
+      <div class="section-title">Contact</div>
+      <div class="kv"><div class="k">Phone</div><div><a href="tel:+919043090457">+91 90430 90457</a></div></div>
+      <div class="kv"><div class="k">Location</div><div>Chennai, India</div></div>
+    </div>
+
+    <footer style="text-align:center;color:var(--muted);margin-top:40px;">
+      © Haritha V • Portfolio
+    </footer>
+  </div>
+
+  <script>
+    function showSection(id, event){
+      const sections = ['home','about','education','skills','projects','contact'];
+      sections.forEach(sec => document.getElementById(sec).style.display = (sec === id) ? 'block' : 'none');
+      document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+      if(event) event.target.classList.add('active');
+    }
+  </script>
+</body>
+</html>
